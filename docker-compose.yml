@@ -8,6 +8,11 @@ services:
       - ./ollama_data:/root/.ollama
     environment:
       - CUDA_VISIBLE_DEVICES
+      # --- PERFORMANCE SETTINGS ---
+      # Enable Flash Attention (1 = enabled, 0 = disabled)
+      - OLLAMA_FLASH_ATTENTION=1
+      # Set KV Cache quantization (f16, q8_0, or q4_0)
+      - OLLAMA_KV_CACHE_TYPE=q8_0
     deploy:
       resources:
         reservations:
