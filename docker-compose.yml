@@ -1,0 +1,21 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    environment:
+      - CUDA_VISIBLE_DEVICES
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              # 'all' allows Docker to see all GPUs, 
+              # but CUDA_VISIBLE_DEVICES will restrict which ones Ollama uses.
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
