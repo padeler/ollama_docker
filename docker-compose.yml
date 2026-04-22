@@ -13,6 +13,13 @@ services:
       - OLLAMA_FLASH_ATTENTION=1
       # Set KV Cache quantization (f16, q8_0, or q4_0)
       - OLLAMA_KV_CACHE_TYPE=q8_0
+      # Keep the container alive (30m = 30 minutes)
+      - OLLAMA_KEEP_ALIVE=30m
+      # Number of parallel requests to handle
+      - OLLAMA_NUM_PARALLEL=4
+      # Enable debug logging (2 = verbose, 1 = basic, 0 = off)
+      - OLLAMA_DEBUG=1
+
     deploy:
       resources:
         reservations:
