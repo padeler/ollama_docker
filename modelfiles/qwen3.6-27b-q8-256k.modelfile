@@ -1,0 +1,7 @@
+FROM qwen3.6:27b-q8_0
+PARAMETER num_ctx 256000
+PARAMETER num_predict 256000
+
+# Optimization for solo developer performance
+PARAMETER num_batch 512
+PARAMETER num_thread 8
